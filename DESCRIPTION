@@ -1,0 +1,19 @@
+Package: rtable
+Title: Interact with 'Airtable' API
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "John",
+           family = "Coene",
+           role = c("aut", "cre"),
+           email = "jcoenep@gmail.com")
+Description: Interact with 'Airtable' API.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    cli,
+    httr,
+    purrr,
+    crayon,
+    magrittr
+RoxygenNote: 6.1.1
