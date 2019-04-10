@@ -34,7 +34,7 @@ delete_records <- function(records, ids, base = NULL, table = NULL,
     rec <- record_ids[[i]]
     del <- delete_record(rec, base, table, quiet)
     if(length(del) > 0)
-      deleted <- append(deleted, del)
+      deleted <- append(deleted, list(del))
   }
 
   if(!quiet){
@@ -80,6 +80,13 @@ delete_record <- function(id, base = NULL, table = NULL,
     content <- content(response)
   else 
     content <- list()
+
+  if(!quiet && length(content) > 0){
+    cat(
+      crayon::green(cli::symbol$tick),
+      "Sucessfully deleted", id, "\n"
+    )
+  }
 
   invisible(content)
 }
