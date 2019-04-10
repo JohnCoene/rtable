@@ -47,9 +47,10 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
       )
     }
 
-    if(i == 1)
-      offset <- NULL
+    # no offset for initial query
+    if(i == 1) offset <- NULL
 
+    # buil URL
     call <- .build_path(base, table) %>% 
       .build_query(
         maxRecords = max_records,
@@ -60,8 +61,8 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
       ) %>% 
       .build_url()
 
+    # Call API
     token <- .get_bearer_token()
-
     response <- GET(call, add_headers(Authorization = token))
     content <- content(response)
 
@@ -74,7 +75,7 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
     if(!quiet){
       cat(
         crayon::blue(cli::symbol$info),
-        length(records), "downloaded\n"
+        length(records), "records downloaded\n"
       )
     }
 
