@@ -29,9 +29,9 @@ setup(api_key = "xxXXxxxXXx", base = "appfSQILnns4mrSUr", table = "Onboarding Ch
 
 
 ```
-> ✔ Base sucessfully setup 
-> ✔ Table sucessfully setup 
-> ✔ View sucessfully setup
+#> ✔ Base sucessfully setup 
+#> ✔ Table sucessfully setup 
+#> ✔ View sucessfully setup
 ```
 
 Note that you can set up your `api_key` as a global variable by adding the option below to your `.Renviron` or `.Rprofile`.
@@ -45,10 +45,10 @@ You can check what has been set up with.
 
 ```r
 get_setup()
-> ✔ API KEY is set up 
-> ✔ Base is set up 
-> ✔ Table is set up 
-> ✔ View is set up
+#> ✔ API KEY is set up 
+#> ✔ Base is set up 
+#> ✔ Table is set up 
+#> ✔ View is set up
 ```
 
 You can always reset the setup with `reset_setup`.
@@ -60,8 +60,8 @@ We can then list records with the `list_records` function. Since we specified a 
 
 ```r
 records <- list_records()
-> ❯ Fetching page 1 
-> ✔ 20 records downloaded
+#> ❯ Fetching page 1 
+#> ✔ 20 records downloaded
 ```
 
 We can retrieve a single record with `retrieve_record`.
@@ -69,7 +69,7 @@ We can retrieve a single record with `retrieve_record`.
 
 ```r
 record <- retrieve_record(records[[1]]$id)
-> ✔ Record recQH369e9U4LcgzU sucessfully retrieved
+#> ✔ Record recQH369e9U4LcgzU sucessfully retrieved
 ```
 
 ## Create
@@ -80,7 +80,7 @@ We can create a new record with `create_records`
 ```r
 df <- data.frame(Name = "It's me")
 created <- create_records(df)
-> ✔ Sucessfully created 1 records
+#> ✔ Sucessfully created 1 records
 ```
 
 To demonstrate that it worked we can retrieve it again with `retrieve_record`
@@ -88,9 +88,9 @@ To demonstrate that it worked we can retrieve it again with `retrieve_record`
 
 ```r
 (rec <- created[[1]]$id) # we'll need it later
-> [1] "recsT79bPrGt8d5J8"
+#> [1] "rec5NDJvVBUqz9gpv"
 retrieve_record(rec)
-> ✔ Record recsT79bPrGt8d5J8 sucessfully retrieved
+#> ✔ Record rec5NDJvVBUqz9gpv sucessfully retrieved
 ```
 
 ## Update
@@ -101,7 +101,7 @@ We can update records with `update_record`. Let's update the one we just created
 ```r
 df <- data.frame(Name = "It's me again!", record_id = rec)
 updated <- update_records(df, record_id)
-> ✔ Sucessfully updated 1 records
+#> ✔ Sucessfully updated 1 records
 ```
 
 We'll retrieve the record we updated and see if it matches the one we updated.
@@ -109,9 +109,9 @@ We'll retrieve the record we updated and see if it matches the one we updated.
 
 ```r
 updated_record <- retrieve_record(rec)
-> ✔ Record recsT79bPrGt8d5J8 sucessfully retrieved
+#> ✔ Record rec5NDJvVBUqz9gpv sucessfully retrieved
 identical(list(updated_record), updated)
-> [1] TRUE
+#> [1] TRUE
 ```
 
 ## Delete
@@ -128,5 +128,5 @@ Then retrieving the deleted record should error as the record we want to retriev
 
 ```r
 retrieve_record(rec)
-> Error in retrieve_record(rec): Not Found (HTTP 404).
+#> Error in retrieve_record(rec): Not Found (HTTP 404).
 ```
