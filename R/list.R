@@ -8,11 +8,14 @@
 #' @param page_size Size of pages, `100` max.
 #' @param sort Sorting, `asc` or `desc`.
 #' @param view View to fetch.
+#' @param from_record Record wherefrom to start listing.
 #' @param quiet Set to `TRUE` to print helpful messages.
 #' 
+#' @name list-records
 #' @export
 list_records <- function(base = NULL, table = NULL, view = NULL, 
-  sort = NULL, page_size = 100, max_records = 1000, quiet = !interactive()) {
+  from_record = NULL, sort = NULL, page_size = 100, max_records = 1000, 
+  quiet = !interactive()) {
 
   # Check if inputs present
   base <- .get_base(base)
@@ -33,7 +36,8 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
   }
 
   # initialise loop
-  offset <- "initialise"
+  offset <- from_record
+  if(is.null(from_record)) offset <- "initialise"
   records <- list()
   i <- 1
 
@@ -48,7 +52,7 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
     }
 
     # no offset for initial query
-    if(i == 1) offset <- NULL
+    if(i == 1 && is.null(from_record)) offset <- NULL
 
     # buil URL
     call <- .build_path(base, table) %>% 
@@ -64,6 +68,7 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
     # Call API
     token <- .get_bearer_token()
     response <- GET(call, add_headers(Authorization = token))
+    stop_for_status(response)
     content <- content(response)
 
     records <- append(records, content$records)
@@ -72,12 +77,12 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
     i <- i + 1
   }
 
-    if(!quiet){
-      cat(
-        crayon::blue(cli::symbol$info),
-        length(records), "records downloaded\n"
-      )
-    }
+  if(!quiet){
+    cat(
+      crayon::green(cli::symbol$tick),
+      length(records), "records downloaded\n"
+    )
+  }
 
   return(records)
   

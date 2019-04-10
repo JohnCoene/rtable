@@ -3,6 +3,7 @@
 export("%>%")
 export(get_setup)
 export(list_records)
+export(retrieve_record)
 export(setup)
 import(httr)
 importFrom(magrittr,"%>%")
