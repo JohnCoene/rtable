@@ -3,11 +3,15 @@
 \name{setup}
 \alias{setup}
 \alias{get_setup}
+\alias{reset_setup}
 \title{Configure}
 \usage{
 setup(api_key = NULL, base = NULL, table = NULL, view = NULL)
 
 get_setup(quiet = !interactive())
+
+reset_setup(api_key = FALSE, base = TRUE, table = TRUE,
+  view = TRUE)
 }
 \arguments{
 \item{api_key}{Your Airtable API key.}

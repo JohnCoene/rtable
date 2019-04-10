@@ -81,3 +81,34 @@ get_setup <- function(quiet = !interactive()){
 
   invisible(l)
 }
+
+#' @rdname setup
+#' @export
+reset_setup <- function(api_key = FALSE, base = TRUE, table = TRUE, view = TRUE){
+
+  .prt <- function(what){
+    cat(
+      crayon::green(cli::symbol$tick),
+      sprintf("%s sucessfully reset", what),
+      "\n"
+    )
+  }
+
+  if(isTRUE(api_key)){
+    options("RTABLE_API_KEY" = NULL)
+    .prt("API Key")
+  }
+  if(isTRUE(base)){
+    options("RTABLE_BASE" = NULL)
+    .prt("Base")
+  }
+  if(isTRUE(table)){
+    options("RTABLE_TABLE" = NULL)
+    .prt("Table")
+  }
+  if(isTRUE(view)){
+    options("RTABLE_VIEW" = NULL)
+    .prt("View")
+  }
+
+}
