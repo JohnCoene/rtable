@@ -26,10 +26,13 @@ retrieve_record <- function(record, base = NULL, table = NULL,
   # Call API
   token <- .get_bearer_token()
   response <- GET(call, add_headers(Authorization = token))
-  stop_for_status(response)
-  content <- content(response)
+  ok <- .check_response(response, record, quiet)
+  if(ok)
+    content <- content(response)
+  else
+    content <- list()
 
-  if(!quiet){
+  if(!quiet && length(content) > 0){
     cat(
       crayon::green(cli::symbol$tick),
       "Record", record, "sucessfully retrieved\n"

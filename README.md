@@ -61,7 +61,7 @@ We can then list records with the `list_records` function. Since we specified a 
 ```r
 records <- list_records()
 #> ❯ Fetching page 1 
-#> ✔ 20 records downloaded
+#> ✔ 18 records downloaded
 ```
 
 We can retrieve a single record with `retrieve_record`.
@@ -88,9 +88,9 @@ To demonstrate that it worked we can retrieve it again with `retrieve_record`
 
 ```r
 (rec <- created[[1]]$id) # we'll need it later
-#> [1] "rec5NDJvVBUqz9gpv"
+#> [1] "recWd41Emxn4Gv5Lk"
 retrieve_record(rec)
-#> ✔ Record rec5NDJvVBUqz9gpv sucessfully retrieved
+#> ✔ Record recWd41Emxn4Gv5Lk sucessfully retrieved
 ```
 
 ## Update
@@ -109,7 +109,7 @@ We'll retrieve the record we updated and see if it matches the one we updated.
 
 ```r
 updated_record <- retrieve_record(rec)
-#> ✔ Record rec5NDJvVBUqz9gpv sucessfully retrieved
+#> ✔ Record recWd41Emxn4Gv5Lk sucessfully retrieved
 identical(list(updated_record), updated)
 #> [1] TRUE
 ```
@@ -128,5 +128,5 @@ Then retrieving the deleted record should error as the record we want to retriev
 
 ```r
 retrieve_record(rec)
-#> Error in retrieve_record(rec): Not Found (HTTP 404).
+#> ✖ Error on recWd41Emxn4Gv5Lk - Record not found
 ```

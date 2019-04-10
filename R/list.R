@@ -68,10 +68,13 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
     # Call API
     token <- .get_bearer_token()
     response <- GET(call, add_headers(Authorization = token))
-    stop_for_status(response)
-    content <- content(response)
-
-    records <- append(records, content$records)
+    ok <- .check_response(response, quiet = quiet)
+    if(ok){
+      content <- content(response)
+      records <- append(records, content$records)
+    } else {
+      break
+    }
 
     offset <- content$offset # reassign offset
     i <- i + 1

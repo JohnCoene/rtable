@@ -49,9 +49,11 @@ create_records <- function(records, typecast = TRUE, base = NULL,
       encode = "json"
     )
 
-    warn_for_status(response)
-    content <- content(response)
-    created <- append(created, list(content))
+    ok <- .check_response(response, rec, quiet)
+    if(ok){
+      content <- content(response)
+      created <- append(created, list(content))
+    }
     
   }
 

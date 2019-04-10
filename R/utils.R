@@ -55,3 +55,35 @@ BASE_URL <- "https://api.airtable.com/"
 
   paste("Bearer", key)
 }
+
+.status2bool <- function(status){
+  v <- FALSE
+  if(status == 200) v <- TRUE
+  return(v)
+}
+
+.check_response <- function(response, record = NULL, quiet = FALSE){
+  status <- status_code(response)
+
+  if(status != 200 && !quiet){
+
+    cnt <- content(response)
+
+    err <- tryCatch(cnt$error$message, error = function(e) NULL)
+    if(is.null(err))
+      err <- cnt$error
+
+    msg <- ""
+    if(!is.null(record))
+      msg <- paste("Error on", record, "- ")
+
+    cat(
+      crayon::red(cli::symbol$cross),
+      msg,
+      err,
+      "\n"
+    )
+  }
+  
+  .status2bool(status)
+}

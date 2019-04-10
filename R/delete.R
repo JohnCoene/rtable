@@ -33,7 +33,8 @@ delete_records <- function(records, ids, base = NULL, table = NULL,
 
     rec <- record_ids[[i]]
     del <- delete_record(rec, base, table, quiet)
-    deleted <- append(deleted, del)
+    if(length(del) > 0)
+      deleted <- append(deleted, del)
   }
 
   if(!quiet){
@@ -74,7 +75,11 @@ delete_record <- function(id, base = NULL, table = NULL,
     encode = "json"
   )
 
-  content <- content(response)
+  ok <- .check_response(response, id, quiet)
+  if(ok)
+    content <- content(response)
+  else 
+    content <- list()
 
   invisible(content)
 }

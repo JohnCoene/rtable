@@ -55,9 +55,11 @@ update_records <- function(records, ids, base = NULL, table = NULL,
       encode = "json"
     )
 
-    warn_for_status(response)
-    content <- content(response)
-    updated <- append(updated, list(content))
+    ok <- .check_response(response, rec)
+    if(ok){
+      content <- content(response)
+      updated <- append(updated, list(content))
+    }
   }
 
   if(!quiet){
