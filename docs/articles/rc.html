@@ -145,8 +145,8 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 3</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;   record_id         record_created_time Name            </span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;             &lt;dttm&gt;              &lt;chr&gt;           </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; 1 recZwydAvJDGgREgk 2019-11-04 15:46:00 Something       </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 2 recRigcCEvg1i9V6P 2019-11-04 15:46:00 Some other thing</span></a></code></pre>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; 1 recwtAwOOGrkunsgz 2019-11-04 15:50:36 Something       </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 2 reckzia3RFEULJ6ws 2019-11-04 15:50:36 Some other thing</span></a></code></pre>
 </div>
 <div id="update" class="section level2">
 <h2 class="hasAnchor">
@@ -163,8 +163,8 @@
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 3</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;   record_id         record_created_time Name            </span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;             &lt;dttm&gt;              &lt;chr&gt;           </span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1 recZwydAvJDGgREgk 2019-11-04 15:46:00 New Name        </span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 2 recRigcCEvg1i9V6P 2019-11-04 15:46:00 Another new name</span></a></code></pre>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1 recwtAwOOGrkunsgz 2019-11-04 15:50:36 New Name        </span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 2 reckzia3RFEULJ6ws 2019-11-04 15:50:36 Another new name</span></a></code></pre>
 <p><strong>Important</strong> Note that at this point the records we initally pulled using the <code>list_records</code> method have not been updated, only the remote Airtable was. We can can do so with.</p>
 <pre class="sourceCode r" id="cb9"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">rt<span class="op">$</span><span class="kw">refresh</span>()</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; ❯ Fetching page 1 </span></a>
@@ -179,8 +179,8 @@
 <a href="#delete" class="anchor"></a>Delete</h2>
 <p>Finally, we can delete those two records we created and updated.</p>
 <pre class="sourceCode r" id="cb11"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">rt<span class="op">$</span><span class="kw"><a href="../reference/delete-records.html">delete_records</a></span>(created, record_id)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; ✔ Sucessfully deleted recZwydAvJDGgREgk </span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; ✔ Sucessfully deleted recRigcCEvg1i9V6P </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; ✔ Sucessfully deleted recwtAwOOGrkunsgz </span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; ✔ Sucessfully deleted reckzia3RFEULJ6ws </span></a>
 <a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; ✔ Sucessfully deleted 2 records</span></a></code></pre>
 </div>
   </div>

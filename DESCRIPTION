@@ -23,3 +23,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: http://rtable.john-coene.com/
+BugReports: https://github.com/JohnCoene/rtable/issues
