@@ -4,12 +4,14 @@
 \alias{records_to_tibble}
 \title{Convert}
 \usage{
-records_to_tibble(records, convert_date = TRUE)
+records_to_tibble(records, convert_date = TRUE, tz = Sys.timezone())
 }
 \arguments{
 \item{records}{Records obtained from other functions of the package.}
 
-\item{convert_date}{Set to `TRUE` to convert dates to `POSIX`.}
+\item{convert_date}{Set to `TRUE` to convert record creation time to `POSIXct`.}
+
+\item{tz}{Timzone, used if `convert_date` is set to `TRUE`.}
 }
 \value{
 A `tibble` containing the fields of the table together with

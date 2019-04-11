@@ -3,7 +3,7 @@
 #' Create records
 #' 
 #' @inheritParams list-records
-#' @param records A `data.frame` of records to create.
+#' @param records A `data.frame` or `list` of records to create.
 #' @param typecast The Airtable API will perform best-effort
 #'  automatic data conversion from string values if this is set to `TRUE`.
 #' 
@@ -24,13 +24,16 @@ create_records <- function(records, typecast = TRUE, base = NULL,
   if(is.null(base) || is.null(table))
     stop("Missing base or view", call. = FALSE)
 
-  records_list <- records %>% 
-    apply(1, function(x, typecast){
-      list(
-        fields = as.list(x),
-        typecast = typecast
-      )
-    }, typecast)
+  if(inherits(records, "data.frame"))
+    records_list <- records %>% 
+      apply(1, function(x, typecast){
+        list(
+          fields = as.list(x),
+          typecast = typecast
+        )
+      }, typecast)
+  else
+    records_list <- records
 
   call <- .build_path(base, table) %>% 
     .build_url()

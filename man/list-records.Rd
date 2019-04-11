@@ -7,14 +7,17 @@
 \usage{
 list_records(base = NULL, table = NULL, view = NULL,
   from_record = NULL, sort = NULL, page_size = 100,
-  max_records = 1000, quiet = !interactive())
+  max_records = 1000, fields = NULL, filter = NULL,
+  quiet = !interactive())
 }
 \arguments{
 \item{base}{Base, whatever this is Airtable does not document it.}
 
 \item{table}{Name of table.}
 
-\item{view}{View to fetch.}
+\item{view}{The name or ID of a view. If set, only the records
+in that view will be returned. The records will be sorted according 
+to the order of the view.}
 
 \item{from_record}{Record wherefrom to start listing.}
 
@@ -23,6 +26,11 @@ list_records(base = NULL, table = NULL, view = NULL,
 \item{page_size}{Size of pages, `100` max.}
 
 \item{max_records}{Maximum number of records to fetch.}
+
+\item{fields}{A vector of fields to retrieve.}
+
+\item{filter}{A [formula](https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference)
+used to filter records.}
 
 \item{quiet}{Set to `TRUE` to print helpful messages.}
 }

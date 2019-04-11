@@ -39,13 +39,6 @@ BASE_URL <- "https://api.airtable.com/"
     value
 }
 
-.get_view <- function(value){
-  if(is.null(value))
-    getOption("RTABLE_VIEW")
-  else
-    value
-}
-
 .get_bearer_token <- function(){
   setup <- get_setup(TRUE)
   if(is.null(setup$api_key))

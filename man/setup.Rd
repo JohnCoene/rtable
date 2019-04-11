@@ -6,21 +6,18 @@
 \alias{reset_setup}
 \title{Configure}
 \usage{
-setup(api_key = NULL, base = NULL, table = NULL, view = NULL)
+setup(base = NULL, table = NULL, api_key = NULL)
 
 get_setup(quiet = !interactive())
 
-reset_setup(api_key = FALSE, base = TRUE, table = TRUE,
-  view = TRUE)
+reset_setup(base = TRUE, table = TRUE, api_key = FALSE)
 }
 \arguments{
-\item{api_key}{Your Airtable API key.}
-
 \item{base}{An Airtable base name.}
 
 \item{table}{An Airtable table name.}
 
-\item{view}{A view name.}
+\item{api_key}{Your Airtable API key.}
 
 \item{quiet}{Set to \code{TRUE} to print helpful messages.}
 }

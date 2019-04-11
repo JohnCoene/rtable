@@ -9,7 +9,7 @@ create_records(records, typecast = TRUE, base = NULL, table = NULL,
   quiet = !interactive())
 }
 \arguments{
-\item{records}{A `data.frame` of records to create.}
+\item{records}{A `data.frame` or `list` of records to create.}
 
 \item{typecast}{The Airtable API will perform best-effort
 automatic data conversion from string values if this is set to `TRUE`.}

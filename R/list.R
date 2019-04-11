@@ -7,23 +7,27 @@
 #' @param max_records Maximum number of records to fetch.
 #' @param page_size Size of pages, `100` max.
 #' @param sort Sorting, `asc` or `desc`.
-#' @param view View to fetch.
+#' @param view The name or ID of a view. If set, only the records
+#'  in that view will be returned. The records will be sorted according 
+#'  to the order of the view.
 #' @param from_record Record wherefrom to start listing.
 #' @param quiet Set to `TRUE` to print helpful messages.
+#' @param fields A vector of fields to retrieve.
+#' @param filter A [formula](https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference)
+#'  used to filter records.
 #' 
 #' @name list-records
 #' @export
 list_records <- function(base = NULL, table = NULL, view = NULL, 
   from_record = NULL, sort = NULL, page_size = 100, max_records = 1000, 
-  quiet = !interactive()) {
+  fields = NULL, filter = NULL, quiet = !interactive()) {
 
   # Check if inputs present
   base <- .get_base(base)
   table <- .get_table(table)
-  view <- .get_view(view)
 
-  if(is.null(base) || is.null(table) || is.null(view))
-    stop("Missing base, table, or view", call. = FALSE)
+  if(is.null(base) || is.null(table))
+    stop("Missing base, or table", call. = FALSE)
 
   # ensure page size is below 100
   if(page_size > 100){
@@ -61,7 +65,9 @@ list_records <- function(base = NULL, table = NULL, view = NULL,
         pageSize = page_size,
         sort = sort,
         view = view,
-        offset = offset
+        offset = offset,
+        fields = fields,
+        filterByFormula = filter
       ) %>% 
       .build_url()
 

@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 # rtable
 
-`rtable` 
+An R wrapper to the [Airtable API](https://airtable.com/api).
 
 ## Installation
 
@@ -31,16 +31,16 @@ First create an account if you do not have one already. Once logged in, go to yo
 
 ### Setup
 
-Set up your session with the `setup` function. The function will let you pass your `api_key` (__required__), and optionally a `base`, a `table` and a `view`. Here we set up the session for the demo "Employee Onboarding" base, we'll also specify the "All Onboarding Tasks" `view`.
+Set up your session with the `setup` function. The function will let you pass your `api_key` (__required__), and optionally a `base`, and a `table`. Here we set up the session for the demo "Employee Onboarding" base.
 
 ```{r eval=FALSE, echo=TRUE}
 library(rtable)
-setup(api_key = "xxXXxxxXXx", base = "appfSQILnns4mrSUr", table = "Onboarding Checklist", view = "All Onboarding Tasks")
+setup(api_key = "xxXXxxxXXx", base = "appfSQILnns4mrSUr", table = "Onboarding Checklist")
 ```
 
 ```{r eval=TRUE, echo=FALSE}
 library(rtable)
-setup(base = "appfSQILnns4mrSUr", table = "Onboarding Checklist", view = "All Onboarding Tasks")
+setup(base = "appfSQILnns4mrSUr", table = "Onboarding Checklist")
 ```
 
 Note that you can set up your `api_key` as a global variable by adding the option below to your `.Renviron` or `.Rprofile`.
@@ -63,6 +63,13 @@ We can then list records with the `list_records` function. Since we specified a 
 
 ```{r}
 records <- list_records()
+```
+
+Note that all functions return `list`s, we can convert those to list columns with, `records_to_tibble`.
+
+```{r}
+df <- records_to_tibble(records)
+dplyr::glimpse(df)
 ```
 
 We can retrieve a single record with `retrieve_record`.

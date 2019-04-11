@@ -2,7 +2,7 @@
 
 # rtable
 
-`rtable` 
+An R wrapper to the [Airtable API](https://airtable.com/api).
 
 ## Installation
 
@@ -19,19 +19,19 @@ First create an account if you do not have one already. Once logged in, go to yo
 
 ### Setup
 
-Set up your session with the `setup` function. The function will let you pass your `api_key` (__required__), and optionally a `base`, a `table` and a `view`. Here we set up the session for the demo "Employee Onboarding" base, we'll also specify the "All Onboarding Tasks" `view`.
+Set up your session with the `setup` function. The function will let you pass your `api_key` (__required__), and optionally a `base`, and a `table`. Here we set up the session for the demo "Employee Onboarding" base.
 
 
 ```r
 library(rtable)
-setup(api_key = "xxXXxxxXXx", base = "appfSQILnns4mrSUr", table = "Onboarding Checklist", view = "All Onboarding Tasks")
+setup(api_key = "xxXXxxxXXx", base = "appfSQILnns4mrSUr", table = "Onboarding Checklist")
 ```
 
 
 ```
-#> ✔ Base sucessfully setup 
-#> ✔ Table sucessfully setup 
-#> ✔ View sucessfully setup
+#> ✔ API KEY is set up 
+#> ✔ Base is set up 
+#> ✔ Table is set up
 ```
 
 Note that you can set up your `api_key` as a global variable by adding the option below to your `.Renviron` or `.Rprofile`.
@@ -47,8 +47,7 @@ You can check what has been set up with.
 get_setup()
 #> ✔ API KEY is set up 
 #> ✔ Base is set up 
-#> ✔ Table is set up 
-#> ✔ View is set up
+#> ✔ Table is set up
 ```
 
 You can always reset the setup with `reset_setup`.
@@ -64,12 +63,30 @@ records <- list_records()
 #> ✔ 18 records downloaded
 ```
 
+Note that all functions return `list`s, we can convert those to list columns with, `records_to_tibble`.
+
+
+```r
+df <- records_to_tibble(records)
+dplyr::glimpse(df)
+#> Observations: 18
+#> Variables: 8
+#> $ record_id            <chr> "rec0ews9ZIAHUI86P", "rec593llWKXu0FKpR", "…
+#> $ record_created_time  <dttm> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+#> $ `When?`              <chr> "Before your first day", "First day", "Week…
+#> $ Name                 <chr> "Complete your I-9 form and bring relevant …
+#> $ `Complete?`          <lgl> TRUE, NA, NA, TRUE, NA, TRUE, TRUE, NA, NA,…
+#> $ `Relevant Resources` <list> [NULL, "rec3z3adT99u9XQPm", "recY5ekTUA112…
+#> $ Notes                <chr> NA, NA, "Our CEO, Jasmin, has a short orien…
+#> $ Date                 <chr> NA, NA, "2019-04-17", NA, NA, NA, NA, NA, N…
+```
+
 We can retrieve a single record with `retrieve_record`.
 
 
 ```r
 record <- retrieve_record(records[[1]]$id)
-#> ✔ Record recQH369e9U4LcgzU sucessfully retrieved
+#> ✔ Record rec0ews9ZIAHUI86P sucessfully retrieved
 ```
 
 ## Create
@@ -88,9 +105,9 @@ To demonstrate that it worked we can retrieve it again with `retrieve_record`
 
 ```r
 (rec <- created[[1]]$id) # we'll need it later
-#> [1] "recWd41Emxn4Gv5Lk"
+#> [1] "reccNITB1rXTr0T6V"
 retrieve_record(rec)
-#> ✔ Record recWd41Emxn4Gv5Lk sucessfully retrieved
+#> ✔ Record reccNITB1rXTr0T6V sucessfully retrieved
 ```
 
 ## Update
@@ -109,7 +126,7 @@ We'll retrieve the record we updated and see if it matches the one we updated.
 
 ```r
 updated_record <- retrieve_record(rec)
-#> ✔ Record recWd41Emxn4Gv5Lk sucessfully retrieved
+#> ✔ Record reccNITB1rXTr0T6V sucessfully retrieved
 identical(list(updated_record), updated)
 #> [1] TRUE
 ```
@@ -121,6 +138,7 @@ Finally, we can delete the record we created and updaed.
 
 ```r
 delete_record(rec)
+#> ✔ Sucessfully deleted reccNITB1rXTr0T6V
 ```
 
 Then retrieving the deleted record should error as the record we want to retrieve is inexistent.
@@ -128,5 +146,5 @@ Then retrieving the deleted record should error as the record we want to retriev
 
 ```r
 retrieve_record(rec)
-#> ✖ Error on recWd41Emxn4Gv5Lk - Record not found
+#> ✖ Error on reccNITB1rXTr0T6V -  Record not found
 ```

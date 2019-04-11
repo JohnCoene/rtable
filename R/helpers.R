@@ -3,29 +3,37 @@
 #' Convert results to a `tibble`.
 #'
 #' @param records Records obtained from other functions of the package.
-#' @param convert_date Set to `TRUE` to convert dates to `POSIX`.
+#' @param convert_date Set to `TRUE` to convert record creation time to `POSIXct`.
+#' @param tz Timzone, used if `convert_date` is set to `TRUE`.
 #'
 #' @return A `tibble` containing the fields of the table together with
 #'  the `record_id` and `record_created_time` columns.
 #' 
 #' @export
-records_to_tibble <- function(records, convert_date = TRUE){
+records_to_tibble <- function(records, convert_date = TRUE, tz = Sys.timezone()){
   fields <- records %>% 
-    purrr::map("fields") %>% 
-    purrr::map_dfr(dplyr::as_tibble)
+    map("fields") %>% 
+    map_dfr(function(x){
+      lc <- map(x, function(y){
+        if(length(y) > 1)
+          y <- I(list(y))
+        return(y)
+      })
+      as_tibble(lc)
+    })
 
   record_id <- records %>% 
-    purrr::map_chr("id")
+    map_chr("id")
   
   record_created_time <- records %>% 
-    purrr::map_chr("createdTime") 
+    map_chr("createdTime") 
 
   if(convert_date)
-    record_created_time <- as.POSIXct(record_created_time, "%Y-%d-%mT%H:%M:%OSZ", tz = Sys.timezone())
+    record_created_time <- as.POSIXct(record_created_time, "%Y-%d-%mT%H:%M:%OSZ", tz = tz)
 
-  dplyr::tibble(
+  tibble(
     record_id = record_id,
     record_created_time = record_created_time
   ) %>% 
-    dplyr::bind_cols(fields)
-} 
+    bind_cols(fields)
+}

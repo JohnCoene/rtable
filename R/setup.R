@@ -5,7 +5,6 @@
 #' @param api_key Your Airtable API key.
 #' @param base An Airtable base name.
 #' @param table An Airtable table name.
-#' @param view A view name.
 #' @param quiet Set to \code{TRUE} to print helpful messages.
 #' 
 #' @examples
@@ -14,35 +13,21 @@
 #' 
 #' @importFrom utils URLencode
 #' @import httr
+#' @import purrr
+#' @import dplyr
 #' @export
 #' @name setup
-setup <- function(api_key = NULL, base = NULL, table = NULL, view = NULL) {
-
-  .prt <- function(what){
-    cat(
-      crayon::green(cli::symbol$tick),
-      sprintf("%s sucessfully setup", what),
-      "\n"
-    )
-  }
+setup <- function(base = NULL, table = NULL, api_key = NULL) {
 
   # setup
-  if(!is.null(api_key)){
+  if(!is.null(api_key))
     options("RTABLE_API_KEY" = api_key)
-    .prt("API Key")
-  }
-  if(!is.null(base)){
+  if(!is.null(base))
     options("RTABLE_BASE" = base)
-    .prt("Base")
-  }
-  if(!is.null(table)){
+  if(!is.null(table))
     options("RTABLE_TABLE" = table)
-    .prt("Table")
-  }
-  if(!is.null(view)){
-    options("RTABLE_VIEW" = view)
-    .prt("View")
-  }
+
+  get_setup()
 }
 
 #' @rdname setup
@@ -51,7 +36,6 @@ get_setup <- function(quiet = !interactive()){
   key <- getOption("RTABLE_API_KEY")
   base <- getOption("RTABLE_BASE")
   table <- getOption("RTABLE_TABLE")
-  view <- getOption("RTABLE_VIEW")
 
   .prt <- function(val, what){
     if(!is.null(val))
@@ -71,20 +55,19 @@ get_setup <- function(quiet = !interactive()){
   l <- list(
     api_key = key,
     base = base,
-    table = table,
-    view = view
+    table = table
   )
-  names <- c("API KEY", "Base", "Table", "View")
+  names <- c("API KEY", "Base", "Table")
 
   if(!quiet)
-    purrr::map2(l, names, .prt)
+    map2(l, names, .prt)
 
   invisible(l)
 }
 
 #' @rdname setup
 #' @export
-reset_setup <- function(api_key = FALSE, base = TRUE, table = TRUE, view = TRUE){
+reset_setup <- function(base = TRUE, table = TRUE, api_key = FALSE){
 
   .prt <- function(what){
     cat(
@@ -105,10 +88,6 @@ reset_setup <- function(api_key = FALSE, base = TRUE, table = TRUE, view = TRUE)
   if(isTRUE(table)){
     options("RTABLE_TABLE" = NULL)
     .prt("Table")
-  }
-  if(isTRUE(view)){
-    options("RTABLE_VIEW" = NULL)
-    .prt("View")
   }
 
 }
