@@ -1,0 +1,107 @@
+---
+title: "RC API"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{RC API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Thi document covers the RC (reference class) of rtable.
+
+## Setup
+
+Create your rtable with the `new` method, the method works in a fashion similar to `setup` from the classic API.
+
+Here we set up the session for the demo "Employee Onboarding" base and its "Onboarding Checklist" table. Note that by default the initialisation pulls the records from the table with `list_records`. This can be turned off by setting the `list_records` to `FALSE` when initialising the object, as we demonstrate below.
+
+```r
+library(rtable)
+
+rt <- rtable$new(base = "appfSQILnns4mrSUr", table = "Onboarding Checklist", api_key = "xxXXxxxXXX", list_records = FALSE)
+```
+
+```{r, eval=TRUE, echo=FALSE}
+library(rtable)
+
+rt <- rtable$new(base = "appfSQILnns4mrSUr", table = "Onboarding Checklist", list_records = FALSE)
+rt
+```
+
+The `rtable` object therefore does not include any record.
+
+```{r}
+rt$list_records()
+```
+
+This is particularly useful if you want to pass specific parameters to `list_records` and do not want the whole table returned.
+
+## Get
+
+If you want to extract the records you can do so with.
+
+```{r}
+rt$get_listed() %>% 
+  dplyr::glimpse()
+```
+
+## Create
+
+```{r}
+new_records <- dplyr::tibble(Name = c("Something", "Some other thing"))
+rt$create_records(new_records)
+```
+
+You can then fetch the created records with.
+
+```{r}
+(created <- rt$get_created())
+```
+
+## Update
+
+Now we can update the records we created.
+
+```{r}
+update_records <- dplyr::tibble(
+  record_id = created$record_id, 
+  Name = c("New Name", "Another new name")
+)
+rt$update_records(update_records, record_id)
+```
+
+We can then return the updated records with.
+
+```{r}
+(updated <- rt$get_updated())
+```
+
+__Important__ Note that at this point the records we initally pulled using the `list_records` method have not been updated, only the remote Airtable was. We can can do so with.
+
+```{r}
+rt$refresh()
+```
+
+We see that it pulled 20 records as opposed to the 18 previously fetched because we created two new records.
+
+```{r}
+rt$get_listed() %>% 
+  nrow()
+```
+
+## Delete
+
+Finally, we can delete those two records we created and updated.
+
+```{r}
+rt$delete_records(created, record_id)
+```

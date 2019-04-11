@@ -39,12 +39,16 @@ BASE_URL <- "https://api.airtable.com/"
     value
 }
 
+.get_api_key <- function(){
+  Sys.getenv("RTABLE_API_KEY") 
+}
+
 .get_bearer_token <- function(){
   setup <- get_setup(TRUE)
   if(is.null(setup$api_key))
     stop("Missing API key", call. = FALSE)
   
-  key <- getOption("RTABLE_API_KEY")
+  key <- .get_api_key()
 
   paste("Bearer", key)
 }

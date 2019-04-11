@@ -3,8 +3,9 @@
 #' Retrive a record
 #' 
 #' @inheritParams list-records
-#' @param record A record to retrieve.
+#' @param record,records Record(s) to retrieve.
 #' 
+#' @name retrieve-records
 #' @export
 retrieve_record <- function(record, base = NULL, table = NULL, 
   quiet = !interactive()) {
@@ -40,4 +41,11 @@ retrieve_record <- function(record, base = NULL, table = NULL,
   }
 
   invisible(content)
+}
+
+#' @rdname retrieve-records
+#' @export
+retrieve_records <- function(records, base = NULL, table = NULL, 
+  quiet = !interactive()){
+  map(records, retrieve_record, base = base, table = table, quiet = quiet)
 }

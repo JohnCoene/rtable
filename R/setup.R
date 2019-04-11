@@ -21,19 +21,18 @@ setup <- function(base = NULL, table = NULL, api_key = NULL) {
 
   # setup
   if(!is.null(api_key))
-    options("RTABLE_API_KEY" = api_key)
+    Sys.setenv("RTABLE_API_KEY" = api_key)
   if(!is.null(base))
     options("RTABLE_BASE" = base)
   if(!is.null(table))
     options("RTABLE_TABLE" = table)
-
-  get_setup()
+  
 }
 
 #' @rdname setup
 #' @export
 get_setup <- function(quiet = !interactive()){
-  key <- getOption("RTABLE_API_KEY")
+  key <- Sys.getenv("RTABLE_API_KEY")
   base <- getOption("RTABLE_BASE")
   table <- getOption("RTABLE_TABLE")
 
@@ -78,7 +77,7 @@ reset_setup <- function(base = TRUE, table = TRUE, api_key = FALSE){
   }
 
   if(isTRUE(api_key)){
-    options("RTABLE_API_KEY" = NULL)
+    Sys.setenv("RTABLE_API_KEY" = NULL)
     .prt("API Key")
   }
   if(isTRUE(base)){

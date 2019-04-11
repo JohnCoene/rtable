@@ -1,0 +1,42 @@
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![Travis build status](https://travis-ci.org/JohnCoene/rtable.svg?branch=master)](https://travis-ci.org/JohnCoene/rtable) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/rtable?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/rtable)
+
+# rtable
+
+An R wrapper to the [Airtable API](https://airtable.com/api).
+
+## Install
+
+```r
+# install.packages("remotes")
+remotes::install_github("JohnCoene/rtable")
+```
+
+## APIs
+
+rtable comes with two APIs, classic and R6, both come with the same functionalities.
+
+## Setup
+
+This document will help you get setup. First head to [Airtable](https://airtable.com) and create an account if you do not have one already. Once logged in head to your [account page](https://airtable.com/account), where you should see your token.
+
+You are advised placing your token as a environment variable in your `.Renviron` file. The easiest way to do so is using the [usethis package](https://usethis.r-lib.org/).
+
+```r
+# install.packages(usethis)
+usethis::edit_r_environ()
+```
+
+Then place the following inside.
+
+```r
+RTABLE_API_KEY = "<my_api_key>"
+```
+
+This way the token will be loaded automatically in your session, it is also much more secure than including it in R scripts and Shiny apps.
+
+Either APIs _require_:
+
+1. An API key (described above)
+2. A base id (described below)
+
+To obtain your base id head to the [API documentation page](https://airtable.com/api) and select the base you want to work with. The base id will be the URL of the resulting page (first element in path), it starts with `app`, i.e.: `appeDnXpirVfc0UAh`

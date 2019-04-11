@@ -43,7 +43,7 @@ create_records <- function(records, typecast = TRUE, base = NULL,
 
   for(i in 1:length(records_list)){
 
-    rec <- records_list[[1]]
+    rec <- records_list[[i]]
 
     response <- POST(
       call,
