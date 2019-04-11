@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-Thi document covers the RC (reference class) of rtable.
+This document covers the RC (reference class) of rtable.
 
-## Setup
+## Setup
 
 Create your rtable with the `new` method, the method works in a fashion similar to `setup` from the classic API.
 

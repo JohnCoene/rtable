@@ -1,0 +1,32 @@
+url: http://rtable.john-coene.com
+
+template:
+  params:
+    bootswatch: lumen
+    ganalytics: UA-74544116-1
+
+development:
+  mode: release
+
+navbar:
+  type: inverse
+  title: "echarts4r"
+  left:
+    - icon: fa-home
+      href: index.html
+    - icon: fa-balance-scale
+      href: LICENSE.html
+    - icon: fa-code
+      text: Functions
+      href: "reference/"
+    - text: Classic API
+      href: articles/classic.html
+    - text: Reference Class
+      href: articles/rc.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/JohnCoene/rtable
+
+authors:
+  John Coene:
+    href: http://john-coene.com

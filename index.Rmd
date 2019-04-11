@@ -15,6 +15,15 @@ remotes::install_github("JohnCoene/rtable")
 
 rtable comes with two APIs, classic and R6, both come with the same functionalities.
 
+<div class="row">
+<div class="col-md-3">
+<a href="./articles/classic.html" class="btn btn-primary">Classic</a>
+</div>
+<div class="col-md-3">
+<a href="./articles/rc.html" class="btn btn-default">Reference Class</a>
+</div>
+</div>
+
 ## Setup
 
 This document will help you get setup. First head to [Airtable](https://airtable.com) and create an account if you do not have one already. Once logged in head to your [account page](https://airtable.com/account), where you should see your token.
