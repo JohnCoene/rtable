@@ -1,4 +1,4 @@
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![Travis build status](https://travis-ci.org/JohnCoene/rtable.svg?branch=master)](https://travis-ci.org/JohnCoene/rtable) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/rtable?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/rtable)
 
 # rtable
 
@@ -15,7 +15,9 @@ remotes::install_github("JohnCoene/rtable")
 
 ## How-to
 
-First create an account if you do not have one already. Once logged in, go to your "Account" page and keep note of your API key as we will need it in the next section. Finally visit the [Airtable API documentation page](https://airtable.com/api) and select a base, the documentation will show you the `id` of the base you are viewing. Here we set up the session for the demo "Employee Onboarding" base and its "Onboarding Checklist" table. 
+First create an account if you do not have one already. Once logged in, go to your "Account" page and keep note of your API key as we will need it in the next section. Finally visit the [Airtable API documentation page](https://airtable.com/api) and select a base, the documentation will show you the `id` of the base. Here we set up the session for the demo "Employee Onboarding" base and its "Onboarding Checklist" table. 
+
+The following snippets of code will fetch records, create, update and finally delete records to end with the original table unchanged.
 
 ### Setup
 
@@ -105,9 +107,9 @@ To demonstrate that it worked we can retrieve it again with `retrieve_record`
 
 ```r
 (rec <- created[[1]]$id) # we'll need it later
-#> [1] "reccNITB1rXTr0T6V"
+#> [1] "recSGXj0xX8FPZmR1"
 retrieve_record(rec)
-#> ✔ Record reccNITB1rXTr0T6V sucessfully retrieved
+#> ✔ Record recSGXj0xX8FPZmR1 sucessfully retrieved
 ```
 
 ## Update
@@ -126,7 +128,7 @@ We'll retrieve the record we updated and see if it matches the one we updated.
 
 ```r
 updated_record <- retrieve_record(rec)
-#> ✔ Record reccNITB1rXTr0T6V sucessfully retrieved
+#> ✔ Record recSGXj0xX8FPZmR1 sucessfully retrieved
 identical(list(updated_record), updated)
 #> [1] TRUE
 ```
@@ -138,7 +140,7 @@ Finally, we can delete the record we created and updaed.
 
 ```r
 delete_record(rec)
-#> ✔ Sucessfully deleted reccNITB1rXTr0T6V
+#> ✔ Sucessfully deleted recSGXj0xX8FPZmR1
 ```
 
 Then retrieving the deleted record should error as the record we want to retrieve is inexistent.
@@ -146,5 +148,5 @@ Then retrieving the deleted record should error as the record we want to retriev
 
 ```r
 retrieve_record(rec)
-#> ✖ Error on reccNITB1rXTr0T6V -  Record not found
+#> ✖ Error on recSGXj0xX8FPZmR1 -  Record not found
 ```

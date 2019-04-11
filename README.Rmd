@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![Travis build status](https://travis-ci.org/JohnCoene/rtable.svg?branch=master)](https://travis-ci.org/JohnCoene/rtable) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/rtable?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/rtable)
 
 # rtable
 
@@ -27,7 +27,9 @@ remotes::install_github("JohnCoene/rtable")
 
 ## How-to
 
-First create an account if you do not have one already. Once logged in, go to your "Account" page and keep note of your API key as we will need it in the next section. Finally visit the [Airtable API documentation page](https://airtable.com/api) and select a base, the documentation will show you the `id` of the base you are viewing. Here we set up the session for the demo "Employee Onboarding" base and its "Onboarding Checklist" table. 
+First create an account if you do not have one already. Once logged in, go to your "Account" page and keep note of your API key as we will need it in the next section. Finally visit the [Airtable API documentation page](https://airtable.com/api) and select a base, the documentation will show you the `id` of the base. Here we set up the session for the demo "Employee Onboarding" base and its "Onboarding Checklist" table. 
+
+The following snippets of code will fetch records, create, update and finally delete records to end with the original table unchanged.
 
 ### Setup
 
