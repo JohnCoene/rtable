@@ -19,7 +19,7 @@
 #' @name list-records
 #' @export
 list_records <- function(base = NULL, table = NULL, view = NULL, 
-  from_record = NULL, sort = NULL, page_size = 100, max_records = 1000, 
+  from_record = NULL, sort = NULL, page_size = 100, max_records = 10000, 
   fields = NULL, filter = NULL, quiet = !interactive()) {
 
   # Check if inputs present

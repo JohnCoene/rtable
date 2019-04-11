@@ -7,7 +7,7 @@
 \usage{
 list_records(base = NULL, table = NULL, view = NULL,
   from_record = NULL, sort = NULL, page_size = 100,
-  max_records = 1000, fields = NULL, filter = NULL,
+  max_records = 10000, fields = NULL, filter = NULL,
   quiet = !interactive())
 }
 \arguments{
