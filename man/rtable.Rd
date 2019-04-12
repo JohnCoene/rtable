@@ -21,7 +21,7 @@ class invisibly.
  \item{\code{set_records}: add pre-existing records to the \code{rtable} from a \code{data.frame}.}
  \item{\code{list_records}: download records from Airtable, \emph{overrides} current records.}
  \item{\code{retrieve_record}: retrieve a specific record.}
- \item{\code{retrieve_records}: retrieve specific records}
+ \item{\code{retrieve_records}: retrieve specific records.}
  \item{\code{create_records}: create records.}
  \item{\code{update_records}: update records.}
  \item{\code{delete_records}: delete records.}
