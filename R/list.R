@@ -5,15 +5,15 @@
 #' @param base Base, whatever this is Airtable does not document it.
 #' @param table Name of table.
 #' @param max_records Maximum number of records to fetch.
-#' @param page_size Size of pages, `100` max.
-#' @param sort Sorting, `asc` or `desc`.
+#' @param page_size Size of pages, \code{100} max.
+#' @param sort Sorting, \code{asc} or \code{desc}.
 #' @param view The name or ID of a view. If set, only the records
 #'  in that view will be returned. The records will be sorted according 
 #'  to the order of the view.
 #' @param from_record Record wherefrom to start listing.
-#' @param quiet Set to `TRUE` to print helpful messages.
+#' @param quiet Set to \code{TRUE} to print helpful messages.
 #' @param fields A vector of fields to retrieve.
-#' @param filter A [formula](https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference)
+#' @param filter A \href{https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference}{formula}
 #'  used to filter records.
 #' 
 #' @name list-records

@@ -19,7 +19,7 @@ retrieve_records(records, base = NULL, table = NULL,
 
 \item{table}{Name of table.}
 
-\item{quiet}{Set to `TRUE` to print helpful messages.}
+\item{quiet}{Set to \code{TRUE} to print helpful messages.}
 }
 \description{
 Retrive a record

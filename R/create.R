@@ -3,9 +3,9 @@
 #' Create records
 #' 
 #' @inheritParams list-records
-#' @param records A `data.frame` or `list` of records to create.
+#' @param records A \code{data.frame} or \code{list} of records to create.
 #' @param typecast The Airtable API will perform best-effort
-#'  automatic data conversion from string values if this is set to `TRUE`.
+#'  automatic data conversion from string values if this is set to \code{TRUE}.
 #' 
 #' @return A list of created records.
 #' @name create-records

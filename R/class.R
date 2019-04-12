@@ -3,42 +3,46 @@
 #' Create an rtable object.
 #' 
 #' @section Methods:
-#' Methods sarting in `get_` return `tibble` or `list` objects other methods return the 
+#' Methods sarting in \code{get_} return \code{tibble} or \code{list} objects other methods return the 
 #' class invisibly.
-#' * `new` - Create an `rtable`.
-#' * `silent` - Make the object silent, equivalent to `quiet=FALSE` in other functions.
-#' * `set_records` - Add pre-existing records to the `rtable` from a `data.frame`.
-#' * `list_records` - Download records from Airtable, _overrides_ current records.
-#' * `retrieve_record` - Retrieve a specific record.
-#' * `retrieve_records` - Retrieve specific records.
-#' * `create_records` - Create records.
-#' * `update_records` - Update records.
-#' * `delete_records` - Delete records.
-#' * `delete_record` - Delete a record.
-#' * `get_created` - Returns created records.
-#' * `get_listed` - Returns records downloaded.
-#' * `get_updated` - Returns updated records.
-#' * `get_deleted` - Returns deleted records.
-#' * `get_retrieved` - Returns retrieved records.
-#' * `refresh` - Refresh records uses arguments last used `list_records` or defaults if never used.
+#' \itemize{
+#'  \item{\code{new}: create an \code{rtable}.}
+#'  \item{\code{silent}: make the object silent, equivalent to \code{quiet=FALSE} in other functions.}
+#'  \item{\code{set_records}: add pre-existing records to the \code{rtable} from a \code{data.frame}.}
+#'  \item{\code{list_records}: download records from Airtable, \emph{overrides} current records.}
+#'  \item{\code{retrieve_record}: retrieve a specific record.}
+#'  \item{\code{retrieve_records}: retrieve specific records}
+#'  \item{\code{create_records}: create records.}
+#'  \item{\code{update_records}: update records.}
+#'  \item{\code{delete_records}: delete records.}
+#'  \item{\code{delete_record}: delete a record.}
+#'  \item{\code{get_created}: returns created records.}
+#'  \item{\code{get_listed}: returns records downloaded.}
+#'  \item{\code{get_updated}: returns updated records.}
+#'  \item{\code{get_deleted}: returns deleted records.}
+#'  \item{\code{get_retrieved}: returns retrieved records.}
+#'  \item{\code{refresh}: refresh records uses arguments last used \code{list_records} or defaults if never used.}
+#' }
 #' 
 #' @section Arguments:
-#' * `new` - see \code{\link{setup}}, also takes an additional `list_records` argument which defaults to `TRUE` and collects all records in table.
-#' * `silent` - takes `TRUE` or `FALSE`.
-#' * `set_records` - see \code{\link{setup}}.
-#' * `list_records` - see \code{\link{list_records}}.
-#' * `retrieve_record` - see \code{\link{retrieve_record}}.
-#' * `retrieve_records` - see \code{\link{retrieve_records}}.
-#' * `create_records` - see \code{\link{create_records}}.
-#' * `update_records` - see \code{\link{update_records}}.
-#' * `delete_records` - see \code{\link{delete_records}}.
-#' * `delete_record` - see \code{\link{delete_record}}.
-#' * `get_created` - Takes `to_tibble` to optionally convert to a `tibble`.
-#' * `get_listed` - Takes `to_tibble` to optionally convert to a `tibble`.
-#' * `get_updated` - Takes `to_tibble` to optionally convert to a `tibble`.
-#' * `get_deleted` - Takes `to_tibble` to optionally convert to a `tibble`.
-#' * `get_retrieved` - Takes `to_tibble` to optionally convert to a `tibble`.
-#' * `refresh` - No arguments.
+#' \itemize{
+#'  \item{\code{new}: see \code{\link{setup}}, also takes an additional \code{list_records} argument which defaults to \code{TRUE} and collects all records in table.}
+#'  \item{\code{silent}: takes a boolean.}
+#'  \item{\code{set_records}: a \code{data.frame} or \code{tibble}.}
+#'  \item{\code{list_records}: see \code{\link{list_records}}.}
+#'  \item{\code{retrieve_record}: see \code{\link{retrieve_record}}.}
+#'  \item{\code{retrieve_records}: see \code{\link{retrieve_records}}.}
+#'  \item{\code{create_records}: see \code{\link{create_records}}.}
+#'  \item{\code{update_records}: see \code{\link{update_records}}.}
+#'  \item{\code{delete_records}: see \code{\link{delete_records}}.}
+#'  \item{\code{delete_record}: see \code{\link{delete_record}}.}
+#'  \item{\code{get_created}: takes \code{to_tibble} to optionally convert to a \code{tibble}.}
+#'  \item{\code{get_listed}: takes \code{to_tibble} to optionally convert to a \code{tibble}.}
+#'  \item{\code{get_updated}: takes \code{to_tibble} to optionally convert to a \code{tibble}.}
+#'  \item{\code{get_deleted}: takes \code{to_tibble} to optionally convert to a \code{tibble}.}
+#'  \item{\code{get_retrieved}: takes \code{to_tibble} to optionally convert to a \code{tibble}.}
+#'  \item{\code{refresh}: takes \code{to_tibble} to optionally convert to a \code{tibble}.}
+#' }
 #' 
 #' @export
 rtable <- R6::R6Class(
@@ -228,3 +232,4 @@ rtable <- R6::R6Class(
     .last_updated = Sys.time()
   )
 )
+#'  \item{\code{}}

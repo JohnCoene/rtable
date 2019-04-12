@@ -1,13 +1,13 @@
 #' Convert
 #'
-#' Convert results to a `tibble`.
+#' Convert results to a \code{tibble}.
 #'
 #' @param records Records obtained from other functions of the package.
-#' @param convert_date Set to `TRUE` to convert record creation time to `POSIXct`.
-#' @param tz Timzone, used if `convert_date` is set to `TRUE`.
+#' @param convert_date Set to \code{TRUE} to convert record creation time to \code{POSIXct}.
+#' @param tz Timzone, used if \code{convert_date} is set to \code{TRUE}.
 #'
-#' @return A `tibble` containing the fields of the table together with
-#'  the `record_id` and `record_created_time` columns.
+#' @return A \code{tibble} containing the fields of the table together with
+#'  the \code{record_id} and \code{record_created_time} columns.
 #' 
 #' @export
 records_to_tibble <- function(records, convert_date = TRUE, tz = Sys.timezone()){

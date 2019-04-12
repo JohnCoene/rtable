@@ -9,16 +9,16 @@ create_records(records, typecast = TRUE, base = NULL, table = NULL,
   quiet = !interactive())
 }
 \arguments{
-\item{records}{A `data.frame` or `list` of records to create.}
+\item{records}{A \code{data.frame} or \code{list} of records to create.}
 
 \item{typecast}{The Airtable API will perform best-effort
-automatic data conversion from string values if this is set to `TRUE`.}
+automatic data conversion from string values if this is set to \code{TRUE}.}
 
 \item{base}{Base, whatever this is Airtable does not document it.}
 
 \item{table}{Name of table.}
 
-\item{quiet}{Set to `TRUE` to print helpful messages.}
+\item{quiet}{Set to \code{TRUE} to print helpful messages.}
 }
 \value{
 A list of created records.

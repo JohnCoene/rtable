@@ -8,7 +8,7 @@ update_records(records, ids, base = NULL, table = NULL,
   quiet = !interactive())
 }
 \arguments{
-\item{records}{A `data.frame` of records to create.}
+\item{records}{A \code{data.frame} of records to create.}
 
 \item{ids}{Bare column name containing record ids to update.}
 
@@ -16,7 +16,7 @@ update_records(records, ids, base = NULL, table = NULL,
 
 \item{table}{Name of table.}
 
-\item{quiet}{Set to `TRUE` to print helpful messages.}
+\item{quiet}{Set to \code{TRUE} to print helpful messages.}
 }
 \value{
 A list of created records.

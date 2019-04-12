@@ -9,14 +9,14 @@ records_to_tibble(records, convert_date = TRUE, tz = Sys.timezone())
 \arguments{
 \item{records}{Records obtained from other functions of the package.}
 
-\item{convert_date}{Set to `TRUE` to convert record creation time to `POSIXct`.}
+\item{convert_date}{Set to \code{TRUE} to convert record creation time to \code{POSIXct}.}
 
-\item{tz}{Timzone, used if `convert_date` is set to `TRUE`.}
+\item{tz}{Timzone, used if \code{convert_date} is set to \code{TRUE}.}
 }
 \value{
-A `tibble` containing the fields of the table together with
- the `record_id` and `record_created_time` columns.
+A \code{tibble} containing the fields of the table together with
+ the \code{record_id} and \code{record_created_time} columns.
 }
 \description{
-Convert results to a `tibble`.
+Convert results to a \code{tibble}.
 }

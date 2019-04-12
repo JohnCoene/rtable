@@ -3,7 +3,7 @@
 #' Create records
 #' 
 #' @inheritParams list-records
-#' @param records A `data.frame` of records to create.
+#' @param records A \code{data.frame} of records to create.
 #' @param ids Bare column name containing record ids to update.
 #' 
 #' @return A list of created records.

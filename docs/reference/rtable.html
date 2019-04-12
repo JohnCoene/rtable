@@ -31,6 +31,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Airtable — rtable" />
 
 <meta property="og:description" content="Create an rtable object." />
@@ -63,7 +65,7 @@
   <body>
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -146,44 +148,47 @@
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-    <p>Methods sarting in `get_` return `tibble` or `list` objects other methods return the 
-class invisibly.
-* `new` - Create an `rtable`.
-* `silent` - Make the object silent, equivalent to `quiet=FALSE` in other functions.
-* `set_records` - Add pre-existing records to the `rtable` from a `data.frame`.
-* `list_records` - Download records from Airtable, _overrides_ current records.
-* `retrieve_record` - Retrieve a specific record.
-* `retrieve_records` - Retrieve specific records.
-* `create_records` - Create records.
-* `update_records` - Update records.
-* `delete_records` - Delete records.
-* `delete_record` - Delete a record.
-* `get_created` - Returns created records.
-* `get_listed` - Returns records downloaded.
-* `get_updated` - Returns updated records.
-* `get_deleted` - Returns deleted records.
-* `get_retrieved` - Returns retrieved records.
-* `refresh` - Refresh records uses arguments last used `list_records` or defaults if never used.</p>
+    <p>Methods sarting in <code>get_</code> return <code>tibble</code> or <code>list</code> objects other methods return the 
+class invisibly.</p><ul>
+<li><p><code>new</code>: create an <code>rtable</code>.</p></li>
+<li><p><code>silent</code>: make the object silent, equivalent to <code>quiet=FALSE</code> in other functions.</p></li>
+<li><p><code>set_records</code>: add pre-existing records to the <code>rtable</code> from a <code>data.frame</code>.</p></li>
+<li><p><code>list_records</code>: download records from Airtable, <em>overrides</em> current records.</p></li>
+<li><p><code>retrieve_record</code>: retrieve a specific record.</p></li>
+<li><p><code>retrieve_records</code>: retrieve specific records</p></li>
+<li><p><code>create_records</code>: create records.</p></li>
+<li><p><code>update_records</code>: update records.</p></li>
+<li><p><code>delete_records</code>: delete records.</p></li>
+<li><p><code>delete_record</code>: delete a record.</p></li>
+<li><p><code>get_created</code>: returns created records.</p></li>
+<li><p><code>get_listed</code>: returns records downloaded.</p></li>
+<li><p><code>get_updated</code>: returns updated records.</p></li>
+<li><p><code>get_deleted</code>: returns deleted records.</p></li>
+<li><p><code>get_retrieved</code>: returns retrieved records.</p></li>
+<li><p><code>refresh</code>: refresh records uses arguments last used <code>list_records</code> or defaults if never used.</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
 
     
-    <p>* `new` - see <code><a href='setup.html'>setup</a></code>, also takes an additional `list_records` argument which defaults to `TRUE` and collects all records in table.
-* `silent` - takes `TRUE` or `FALSE`.
-* `set_records` - see <code><a href='setup.html'>setup</a></code>.
-* `list_records` - see <code><a href='list-records.html'>list_records</a></code>.
-* `retrieve_record` - see <code><a href='retrieve-records.html'>retrieve_record</a></code>.
-* `retrieve_records` - see <code><a href='retrieve-records.html'>retrieve_records</a></code>.
-* `create_records` - see <code><a href='create-records.html'>create_records</a></code>.
-* `update_records` - see <code><a href='update_records.html'>update_records</a></code>.
-* `delete_records` - see <code><a href='delete-records.html'>delete_records</a></code>.
-* `delete_record` - see <code><a href='delete-records.html'>delete_record</a></code>.
-* `get_created` - Takes `to_tibble` to optionally convert to a `tibble`.
-* `get_listed` - Takes `to_tibble` to optionally convert to a `tibble`.
-* `get_updated` - Takes `to_tibble` to optionally convert to a `tibble`.
-* `get_deleted` - Takes `to_tibble` to optionally convert to a `tibble`.
-* `get_retrieved` - Takes `to_tibble` to optionally convert to a `tibble`.
-* `refresh` - No arguments.</p>
+    <ul>
+<li><p><code>new</code>: see <code><a href='setup.html'>setup</a></code>, also takes an additional <code>list_records</code> argument which defaults to <code>TRUE</code> and collects all records in table.</p></li>
+<li><p><code>silent</code>: takes a boolean.</p></li>
+<li><p><code>set_records</code>: a <code>data.frame</code> or <code>tibble</code>.</p></li>
+<li><p><code>list_records</code>: see <code><a href='list-records.html'>list_records</a></code>.</p></li>
+<li><p><code>retrieve_record</code>: see <code><a href='retrieve-records.html'>retrieve_record</a></code>.</p></li>
+<li><p><code>retrieve_records</code>: see <code><a href='retrieve-records.html'>retrieve_records</a></code>.</p></li>
+<li><p><code>create_records</code>: see <code><a href='create-records.html'>create_records</a></code>.</p></li>
+<li><p><code>update_records</code>: see <code><a href='update_records.html'>update_records</a></code>.</p></li>
+<li><p><code>delete_records</code>: see <code><a href='delete-records.html'>delete_records</a></code>.</p></li>
+<li><p><code>delete_record</code>: see <code><a href='delete-records.html'>delete_record</a></code>.</p></li>
+<li><p><code>get_created</code>: takes <code>to_tibble</code> to optionally convert to a <code>tibble</code>.</p></li>
+<li><p><code>get_listed</code>: takes <code>to_tibble</code> to optionally convert to a <code>tibble</code>.</p></li>
+<li><p><code>get_updated</code>: takes <code>to_tibble</code> to optionally convert to a <code>tibble</code>.</p></li>
+<li><p><code>get_deleted</code>: takes <code>to_tibble</code> to optionally convert to a <code>tibble</code>.</p></li>
+<li><p><code>get_retrieved</code>: takes <code>to_tibble</code> to optionally convert to a <code>tibble</code>.</p></li>
+<li><p><code>refresh</code>: takes <code>to_tibble</code> to optionally convert to a <code>tibble</code>.</p></li>
+</ul>
     
 
   </div>

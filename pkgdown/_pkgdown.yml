@@ -9,7 +9,6 @@ development:
   mode: release
 
 navbar:
-  type: inverse
   title: "echarts4r"
   left:
     - icon: fa-home

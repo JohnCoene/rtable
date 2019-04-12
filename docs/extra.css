@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Slabo+27px');
+
+h1, h2, h3, h4, h5{
+  color: rgb(252, 180, 0);
+}
+
+body{
+  font-family: 'Slabo 27px', serif;
+}
+
+code{
+  font-family: 'Inconsolata', monospace;
+}
+
+.navbar-default{
+  color: rgb(24, 191, 255);
+}
+
+.nav-pills {
+  color: rgb(24, 191, 255);
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus {
+  color: #fff;
+  background-color: rgb(252, 180, 0);
+}
+
+a:hover, a:focus {
+  color: rgb(252, 180, 0);
+}

@@ -12,13 +12,13 @@ delete_records(records, ids, base = NULL, table = NULL,
 delete_record(id, base = NULL, table = NULL, quiet = !interactive())
 }
 \arguments{
-\item{records}{A `data.frame` of records to create.}
+\item{records}{A \code{data.frame} of records to create.}
 
 \item{base}{Base, whatever this is Airtable does not document it.}
 
 \item{table}{Name of table.}
 
-\item{quiet}{Set to `TRUE` to print helpful messages.}
+\item{quiet}{Set to \code{TRUE} to print helpful messages.}
 
 \item{id, ids}{Bare column name containing record ids to update.}
 }

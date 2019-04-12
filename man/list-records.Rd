@@ -21,18 +21,18 @@ to the order of the view.}
 
 \item{from_record}{Record wherefrom to start listing.}
 
-\item{sort}{Sorting, `asc` or `desc`.}
+\item{sort}{Sorting, \code{asc} or \code{desc}.}
 
-\item{page_size}{Size of pages, `100` max.}
+\item{page_size}{Size of pages, \code{100} max.}
 
 \item{max_records}{Maximum number of records to fetch.}
 
 \item{fields}{A vector of fields to retrieve.}
 
-\item{filter}{A [formula](https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference)
+\item{filter}{A \href{https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference}{formula}
 used to filter records.}
 
-\item{quiet}{Set to `TRUE` to print helpful messages.}
+\item{quiet}{Set to \code{TRUE} to print helpful messages.}
 }
 \description{
 List records in table.
