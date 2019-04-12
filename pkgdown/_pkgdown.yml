@@ -5,9 +5,6 @@ template:
     bootswatch: lumen
     ganalytics: UA-74544116-1
 
-development:
-  mode: release
-
 navbar:
   title: "echarts4r"
   left:
@@ -29,3 +26,23 @@ navbar:
 authors:
   John Coene:
     href: http://john-coene.com
+
+reference:
+  - title: "Classic"
+    desc: >
+      Classic API.
+    contents: 
+      - create_records
+      - starts_with("delete")
+      - list_records
+      - matches("setup")
+      - starts_with("update")
+      - starts_with("retrieve")
+  - title: "Class"
+    desc: "Reference Class (R6)."
+    contents:
+      - rtable
+  - title: "Helpers"
+    desc: "Helper functions."
+    contents:
+      - records_to_tibble
